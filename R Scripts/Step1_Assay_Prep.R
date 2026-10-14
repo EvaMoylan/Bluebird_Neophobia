@@ -59,7 +59,8 @@ neo_trials_latencies <- neo_trials_hide |>
          first_feed_time = pmin(bird1_return_feed_hms, bird2_return_feed_hms, na.rm = TRUE), # Pick earliest time or single time if other is missing
          first_approach_time = pmin(bird1_first_approach_hms, bird2_first_approach_hms, na.rm = TRUE),
          first_feed_latency_s = as.numeric(difftime(first_feed_time, trial_start_time_hms, units = "secs")),
-         first_approach_latency_s = as.numeric(difftime(first_approach_time, trial_start_time_hms, units = "secs"))) # earliest time minus trial start time) # earliest time minus trial start time
+         first_approach_latency_s = as.numeric(difftime(first_approach_time, trial_start_time_hms, units = "secs"))) |> # earliest time minus trial start time) # earliest time minus trial start time
+  relocate(c(first_feed_time, first_approach_time), .after = bird2_feed_latency_s)
 
 #first_approach_sex = if_else(bird1_first_approach_hms < bird2_first_approach_hms,
                              #bird1_sex,
@@ -82,9 +83,10 @@ neo_trials_censor <- neo_trials_latencies |>
                                  1,
                                  0),
            diff_approach_feed_s = first_feed_latency_s-first_approach_latency_s,
-           diff_cesnsor = if_else(feed_censor|approach_censor == 1,
+           diff_censor = if_else(feed_censor|approach_censor == 1,
                                   1,
-                                  0))
+                                  0)) |>
+  relocate(c(diff_approach_feed_s, feed_censor, approach_censor, diff_censor), .after = first_approach_latency_s)
 
 neo_trials_censor |> count(feed_censor) # 13 censored trials of 112 total completed
 neo_trials_censor |> count(approach_censor) # 4 censored trials of 112 total completed  
