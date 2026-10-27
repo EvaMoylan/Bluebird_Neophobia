@@ -1,100 +1,97 @@
 ################################################################################
 # Step 1: Neophobia Assay Data Preparation
 # Date edited: 10/10/26
-# Objective: Add missing variables and calculate latencies
+# Objective: Calculate and censor latencies
+# Author: Eva Moylan
 ################################################################################
+
+#################################### Set-up ####################################
 
 # Load packages
 library(tidyverse)
 library(here)
-library(geosphere)
 
-# Load raw neophobia assay data
-neo_trials <- read_csv(here("Data","EM_Bluebird_Neophobia_261010.csv")) |>
-  slice(1:130)
-# ^ this is preliminary data for now, still doing minor excel prep
+# Load raw trial data without latencies or missing hide distances calculated
+neo_trials <- read_csv(here("Data","EM_Bluebird_Neophobia_261020.csv")) |>
+  slice(1:130) # Re-save this sliced version for final repository
 
-################################################################################
-############################### DATA PREPARATION ###############################
-################################################################################
+################################ Minor cleaning ################################
 
-######################### Add missing blind distances ##########################
-# Calculate blind distance from the nest for trials that don't have a rangefinder distance
-
-# Import nestbox coordinates
-box_coords <- read_csv(here("Data", "Nestbox_Site_Coords.csv")) |>
-  rename(nest_box = name,
-         box_lat = lat,
-         box_lon = lon) # Rename for easy joining
-
-# Import hide coordinates that are missing for 2024 and one set of trials in 2025
-hide_coords <- read_csv(here("Data", "Missing_Hide_Dist.csv")) |>
-  filter(!is.na(hide_lat)) # Two nests didn't have any coordinates recorded so remove
-
-# Join hide and box coordinates and calculate distances
-hide_dist <- left_join(hide_coords, box_coords, by = "nest_box") |>
-  # Shortest distance between the two coordinates
-  mutate(hide_distance_m = distHaversine(cbind(hide_lon, hide_lat), cbind(box_lon, box_lat))) |>
-  select(nest_box, hide_distance_m, date)
-
-# Fill in the missing distances in the main dataset
-neo_trials_hide <- left_join(neo_trials, hide_dist, by = c("nest_box", "date")) |>
-  mutate(hide_distance_m = coalesce(hide_distance_m.x, hide_distance_m.y),
-         hide_distance_m = case_when(nest_id == "CP02B1_2024" ~ 23.85523, .default = hide_distance_m),
-         .after = chick_number) |>
-  select(-c(hide_distance_m.x, hide_distance_m.y))
+neo_trials <- neo_trials |>
+  mutate(year = year(mdy(date)), # Add a year column
+         stimulus_object = case_when(stimulus_object == "Green Ball" ~ "Green ball", # Fix case differences in object names
+                                     stimulus_object == "Pink Beads" ~ "Pink beads",
+                                     .default = stimulus_object),
+         nest_box = str_remove(nest_box, "_2026")) |> # Remove formatting mistake
+  relocate(year, .after = nest_box)
 
 ########################### Calculate latency times ############################
 
 # Check data structure
-str(neo_trials_clean) # Times need to be converted to hms
+str(neo_trials) # Times are in hms
 
-unique(neo_trials_hide$bird1_first_approach_hms)
-unique(neo_trials_clean$bird1_first_approach_hms)
-
-# Prep data
-neo_trials_latencies <- neo_trials_hide |>
-  mutate(bird1_first_approach_hms = na_if(bird1_first_approach_hms,"???"),
-         bird1_first_approach_hms = as_hms(parse_date_time(bird1_first_approach_hms, orders = c("HM", "HMS"))), # do this for now, won't need it later
-         first_feed_time = pmin(bird1_return_feed_hms, bird2_return_feed_hms, na.rm = TRUE), # Pick earliest time or single time if other is missing
+# Calculate latencies for first approach, first feed, and first nest entry relative to trial start time
+# Bird specific latency columns already existed in the dataset, so re-calculate the latencies and rename them later
+neo_trials_latencies <- neo_trials |>
+  mutate(bird1_approach_latency_s = as.numeric(difftime(bird1_first_approach_hms, trial_start_time_hms, units = "min")), # Rename column as minutes later
+         bird1_feed_latency_s = as.numeric(difftime(bird1_return_feed_hms, trial_start_time_hms, units = "min")),
+         bird1_entry_latency_min = as.numeric(difftime(bird1_return_entry_hms, trial_start_time_hms, units = "min")),
+         bird2_approach_latency_s = as.numeric(difftime(bird2_first_approach_hms, trial_start_time_hms, units = "min")), # Rename column as minutes later
+         bird2_feed_latency_s = as.numeric(difftime(bird2_return_feed_hms, trial_start_time_hms, units = "min")),
+         bird2_entry_latency_min = as.numeric(difftime(bird2_return_entry_hms, trial_start_time_hms, units = "min")),
+         first_feed_time = pmin(bird1_return_feed_hms, bird2_return_feed_hms, na.rm = TRUE), # Pick earliest time or only available time in cases where one bird fed
          first_approach_time = pmin(bird1_first_approach_hms, bird2_first_approach_hms, na.rm = TRUE),
-         first_feed_latency_s = as.numeric(difftime(first_feed_time, trial_start_time_hms, units = "secs")),
-         first_approach_latency_s = as.numeric(difftime(first_approach_time, trial_start_time_hms, units = "secs"))) |> # earliest time minus trial start time) # earliest time minus trial start time
-  relocate(c(first_feed_time, first_approach_time), .after = bird2_feed_latency_s)
+         first_entry_time = pmin(bird1_return_entry_hms, bird2_return_entry_hms, na.rm = TRUE),
+         first_feed_latency_min = as.numeric(difftime(first_feed_time, trial_start_time_hms, units = "min")), # Earliest time minus trial start time
+         first_approach_latency_min = as.numeric(difftime(first_approach_time, trial_start_time_hms, units = "min")),
+         first_entry_latency_min = as.numeric(difftime(first_entry_time, trial_start_time_hms, units = "min"))) |> 
+  rename(bird1_approach_latency_min = bird1_approach_latency_s,
+         bird1_feed_latency_min = bird1_feed_latency_s,
+         bird2_approach_latency_min = bird2_approach_latency_s,
+         bird2_feed_latency_min = bird2_feed_latency_s,) |>
+  relocate(c(bird2_entry_latency_min, first_approach_time, first_feed_time, first_entry_time, first_approach_latency_min, first_feed_latency_min, first_entry_latency_min), 
+           .after = bird2_feed_latency_min) |>
+  relocate(bird1_entry_latency_min, 
+           .after = bird1_feed_latency_min) |>
+  select(-c(first_approach_latency_s, first_feed_latency_s, first_entry_latency_s)) # Remove some blank columns leftover from initial dataset
 
-#first_approach_sex = if_else(bird1_first_approach_hms < bird2_first_approach_hms,
-                             #bird1_sex,
-                             #bird2_sex),
-#first_feed_sex = 
+# TP02B5 typo, bird 2 approach before trial start - need to go and figure out what happened there
 
 ################################# Censor data ##################################
-  
-neo_trials_censor <- neo_trials_latencies |>
-    mutate(first_feed_latency_s = if_else(!is.na(trial_start_time_hms) & is.na(first_feed_latency_s),
-                                             1200,
-                                             first_feed_latency_s),
-           feed_censor = if_else(first_feed_latency_s == 1200,
-                                 1,
-                                 0),
-           first_approach_latency_s = if_else(!is.na(trial_start_time_hms) & is.na(first_approach_latency_s),
-                                          1200,
-                                          first_approach_latency_s),
-           approach_censor = if_else(first_approach_latency_s == 1200,
-                                 1,
-                                 0),
-           diff_approach_feed_s = first_feed_latency_s-first_approach_latency_s,
-           diff_censor = if_else(feed_censor|approach_censor == 1,
-                                  1,
-                                  0)) |>
-  relocate(c(diff_approach_feed_s, feed_censor, approach_censor, diff_censor), .after = first_approach_latency_s)
 
+# Prevent automatic scientific notation during following pipeline
+options(scipen = 999)
+
+# Right-censor trials that began but birds never performed certain behaviors before trial ended
+neo_trials_censor <- neo_trials_latencies |>
+    mutate(first_approach_latency_min = if_else(!is.na(trial_start_time_hms) & is.na(first_approach_latency_min), # If the trial started but there is no first approach...
+                                          20, # Assign full trial time of 20 minutes
+                                          first_approach_latency_min), # If there is, keep original latency
+           approach_censor = if_else(first_approach_latency_min == 20, # If the approach was right-censored...
+                                 0, # Assign 0
+                                 1), # If uncensored, assign 0
+           first_feed_latency_min = if_else(!is.na(trial_start_time_hms) & is.na(first_feed_latency_min),
+                                          20,
+                                          first_feed_latency_min),
+           feed_censor = if_else(first_feed_latency_min == 20,
+                                 0,
+                                 1),
+           first_entry_latency_min = if_else(!is.na(trial_start_time_hms) & is.na(first_entry_latency_min),
+                                          20,
+                                          first_feed_latency_min),
+           entry_censor = if_else(first_entry_latency_min == 20,
+                                 0,
+                                 1),
+           diff_approach_feed_min = as.numeric(first_feed_latency_min - first_approach_latency_min),
+           diff_censor = if_else(feed_censor == 0 | approach_censor == 0,
+                                  0,
+                                  1)) |>
+  relocate(c(diff_approach_feed_min, approach_censor, feed_censor, entry_censor, diff_censor), .after = first_entry_latency_min)
+
+# Explore censored trials
 neo_trials_censor |> count(feed_censor) # 13 censored trials of 112 total completed
 neo_trials_censor |> count(approach_censor) # 4 censored trials of 112 total completed  
+neo_trials_censor |> count(entry_censor) # 13 censored trials of 112 total completed  
 
-write_csv(neo_trials_censor, here("Data","Main_BBNeophobia_261013.csv"))
-
-## To Do: ##
-# How to control for trials where we were there but they never began?
-# Number of trials attempted?
-# Trial order?
-
+# Save censored data
+write_csv(neo_trials_censor, here("Data","Censor_BBNeophobia_261025.csv"))
