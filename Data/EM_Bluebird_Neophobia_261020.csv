@@ -1,0 +1,227 @@
+﻿section,treatment,site,nest_box,nest_id,species,trial_number,trial_status,stimulus_object,trial_type,year,date,nest_age,chick_number,hide_distance_m,bird1_sex,bird2_sex,bird1_bands,bird2_bands,trial_start_time_hms,bird1_first_approach_hms,bird1_approach_latency_s,bird1_first_distance_m,bird1_return_feed_hms,bird1_return_entry_hms,bird1_feed_latency_s,bird2_first_approach_hms,bird2_approach_latency_s,bird2_first_distance_m,bird2_return_feed_hms,bird2_return_entry_hms,bird2_feed_latency_s,first_feed_latency_s,first_entry_latency_s,first_approach_latency_s,LAeq_slm_dB,LZeq_slm_dB,LAf90_slm_dB,slm_noise_at_trial,light_level_lux,comments
+Red,Control,CP08,CP08B7,CP08B7_2024,MOBL,1,completed,Green ball,Stimulus,2024,6/8/24,4,3,NA,Female,Male,UB,UB,10:44,10:44,NA,4.5,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,39.4,70.6,37.3,No,0,
+Red,Control,CP08,CP08B7,CP08B7_2024,MOBL,2,failed,Pink beads,Stimulus,2024,6/9/24,5,3,NA,Female,Male,UB,UB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,39.4,70.6,37.3,No,0,
+Red,Control,CP08,CP08B7,CP08B7_2024,MOBL,3,completed,Control,Control,2024,6/10/24,6,3,NA,Female,Male,UB,UB,11:05,11:07,NA,4.5,NA,NA,NA,11:07,NA,0,11:07,11:07,NA,NA,NA,NA,39.4,70.6,37.3,No,0,
+Yellow,Light,CP12,CP12B12,CP12B12_2024,MOBL,1,completed,Control,Control,2024,6/3/24,3,5,NA,Female,Male,UB,UB,11:17,11:25,NA,6,NA,NA,NA,11:17,NA,10,NA,NA,NA,NA,NA,NA,35.4,64.9,25,No,0.55,
+Yellow,Light,CP12,CP12B12,CP12B12_2024,MOBL,2,failed,Pink beads,Stimulus,2024,6/4/24,4,5,NA,Female,Male,UB,UB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,35.4,64.9,25,No,0.55,
+Yellow,Light,CP12,CP12B12,CP12B12_2024,MOBL,3,failed,Green ball,Stimulus,2024,6/5/24,5,5,NA,Female,Male,UB,UB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,35.4,64.9,25,Yes,0.55,
+Yellow,Light,CP12,CP12B12,CP12B12_2024,MOBL,4,failed,Pink beads,Stimulus,2024,6/8/24,6,5,NA,Female,Male,UB,UB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,34.7,72.2,26.7,Yes,0.55,
+Yellow,Light,CP12,CP12B6,CP12B6_2024,MOBL,1,completed,Green ball,Stimulus,2024,5/24/24,9,3,NA,Female,Male,UB,UB,9:20,9:30,NA,2,9:31,9:31,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,34.8,62.9,31.7,No,0,Listen for feed time if bird was outside of box feeding
+Yellow,Light,CP12,CP12B6,CP12B6_2024,MOBL,2,completed,Control,Control,2024,5/26/24,11,3,NA,Female,Male,UB,UB,9:40,9:44,NA,26,9:46,9:46,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,34.8,62.9,31.7,No,0,Listen for feed time if bird was outside of box feeding
+Yellow,Light,CP12,CP12B6,CP12B6_2024,MOBL,3,completed,Pink beads,Stimulus,2024,5/27/24,12,3,NA,Female,Male,UB,UB,9:16,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,34.8,62.9,31.7,No,0,Listen for feed time if bird was outside of box feeding
+Red,Light,PC13,PC13B1,PC13B1_2024,MOBL,1,completed,Pink beads,Stimulus,2024,5/26/24,7,4,NA,Female,Male,YY-OS,UB,10:33,10:36,NA,4,NA,NA,NA,10:38,NA,18,NA,NA,NA,NA,NA,NA,36.4,65.9,33.5,No,1.26,Listen for feed time if bird was outside of box feeding
+Red,Light,PC13,PC13B1,PC13B1_2024,MOBL,2,completed,Control,Control,2024,5/27/24,8,4,NA,Female,Male,YY-OS,UB,11:21,11:21,NA,6,11:40,11:40,NA,11:30,NA,2,11:36,11:36,NA,NA,NA,NA,36.4,65.9,33.5,No,1.26,Listen for feed time if bird was outside of box feeding
+Red,Light,PC13,PC13B1,PC13B1_2024,MOBL,3,completed,Green ball,Stimulus,2024,5/28/24,9,4,NA,Female,Male,YY-OS,UB,10:32,10:43,NA,3.5,10:45,10:45,NA,10:51,NA,8,10:52,10:52,NA,NA,NA,NA,36.4,65.9,33.5,No,1.26,Listen for feed time if bird was outside of box feeding
+Orange,Light+Noise,TP04,TP04B6,TP04B6_2024,MOBL,1,completed,Pink beads,Stimulus,2024,5/24/24,5,5,NA,Female,Male,UB,UB,11:32,11:41,NA,8,11:46,11:46,NA,11:32,NA,4,NA,NA,NA,NA,NA,NA,47.9,69.5,47.3,No,0,Listen for feed time if bird was outside of box feeding
+Orange,Light+Noise,TP04,TP04B6,TP04B6_2024,MOBL,2,completed,Green ball,Stimulus,2024,5/26/24,7,4,NA,Female,Male,UB,UB,14:58,15:02,NA,3,NA,NA,NA,15:02,NA,4,NA,NA,NA,NA,NA,NA,47.9,69.5,47.3,No,0,Listen for feed time if bird was outside of box feeding
+Orange,Light+Noise,TP04,TP04B6,TP04B6_2024,MOBL,3,completed,Control,Control,2024,5/27/24,8,4,NA,Female,Male,UB,UB,12:22,12:27,NA,7,12:36,12:36,NA,12:22,NA,7,NA,NA,NA,NA,NA,NA,47.9,69.5,47.3,No,0,Listen for feed time if bird was outside of box feeding
+Green,Noise,TP05,TP05B4,TP05B4_2024,MOBL,1,completed,Pink beads,Stimulus,2024,6/3/24,4,5,NA,Female,Male,UB,UB,10:36,10:37,NA,1,NA,NA,NA,10:36,NA,0.3,NA,NA,NA,NA,NA,NA,49.9,84.5,48.7,No,0,Female grabbed beads and dropped them on ground one minute into the trial
+Green,Noise,TP05,TP05B4,TP05B4_2024,MOBL,2,completed,Green ball,Stimulus,2024,6/4/24,5,5,NA,Female,Male,UB,UB,10:12,10:12,NA,1,10:28,10:28,NA,10:12,NA,1,10:31,10:31,NA,NA,NA,NA,49.9,84.5,48.7,No,0,
+Green,Noise,TP05,TP05B4,TP05B4_2024,MOBL,3,completed,Control,Control,2024,6/7/24,8,5,NA,Female,Male,UB,UB,11:06,11:06,NA,4,NA,NA,NA,11:06,NA,4,NA,NA,NA,NA,NA,NA,49.9,84.5,48.7,No,0,
+Blue,Light,CP02,CP02B1,CP02B1_2024,WEBL,1,completed,Control,Control,2024,6/15/24,5,4,NA,Female,Male,UB,UB,12:09,12:10,NA,0,12:10,12:10,NA,12:09,NA,15,12:09,12:09,NA,NA,NA,NA,28.8,63.6,26.6,No,0.19,
+Blue,Light,CP02,CP02B1,CP02B1_2024,WEBL,2,completed,Pink beads,Stimulus,2024,6/17/24,8,4,NA,Female,Male,UB,UB,13:12,13:19,NA,1,13:19,13:19,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,28.8,63.6,26.6,No,0.19,
+Blue,Light,CP02,CP02B1,CP02B1_2024,WEBL,3,failed,Green ball,Stimulus,2024,6/18/24,9,4,NA,Female,Male,UB,UB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,28.8,63.6,26.6,No,0.19,
+Blue,Light,CP02,CP02B8,CP02B8_2024,WEBL,1,failed,Pink beads,Stimulus,2024,6/13/24,5,4,NA,Female,Male,UB,UB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,38.1,75.3,36.4,No,0,
+Blue,Light,CP02,CP02B8,CP02B8_2024,WEBL,2,failed,Green ball,Stimulus,2024,6/16/24,8,4,NA,Female,Male,UB,UB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,38.1,75.3,36.4,No,0,
+Blue,Light,CP02,CP02B8,CP02B8_2024,WEBL,3,failed,Control,Control,2024,6/17/24,9,2,NA,Female,Male,UB,UB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,38.1,75.3,36.4,No,0,
+Orange,Control,CP06,CP06B5,CP06B5_2024,WEBL,1,failed,Control,Control,2024,5/24/24,10,5,NA,Female,Male,UB,UB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,32.6,66.3,30,No,0,
+Orange,Control,CP06,CP06B5,CP06B5_2024,WEBL,2,completed,Green ball,Stimulus,2024,5/26/24,12,5,NA,Female,Male,UB,UB,1:05,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,32.6,66.3,30,No,0,
+Orange,Control,CP06,CP06B5,CP06B5_2024,WEBL,3,failed,Pink beads,Stimulus,2024,5/29/24,15,5,NA,Female,Male,UB,UB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,32.6,66.3,30,No,0,
+Yellow,Light,CP12,CP12B14,CP12B14_2024,WEBL,1,completed,Control,Control,2024,5/27/24,3,5,NA,Female,Male,UB,UB,10:55,11:12,NA,1,11:12,11:12,NA,10:57,NA,1,10:57,10:57,NA,NA,NA,NA,37.2,65.4,32.1,No,0.25,Listen for feed time if bird was outside of box feeding
+Yellow,Light,CP12,CP12B14,CP12B14_2024,WEBL,2,completed,Green ball,Stimulus,2024,5/28/24,4,5,NA,Female,Male,UB,UB,12:02,12:04,NA,5.5,12:06,12:06,NA,12:05,NA,17,12:10,12:10,NA,NA,NA,NA,37.2,65.4,32.1,No,0.25,Listen for feed time if bird was outside of box feeding
+Yellow,Light,CP12,CP12B14,CP12B14_2024,WEBL,3,completed,Pink beads,Stimulus,2024,5/29/24,5,5,NA,Female,Male,UB,UB,11:40,11:41,NA,5.5,11:44,11:44,NA,11:42,NA,0.5,11:42,11:42,NA,NA,NA,NA,37.2,65.4,32.1,No,0.25,Listen for feed time if bird was outside of box feeding
+Yellow,Light,CP12,CP12B9,CP12B9_2024,WEBL,1,completed,Control,Control,2024,5/24/24,3,5,NA,Female,Male,KB-OS,WB-YS,9:56,9:59,NA,10,NA,NA,NA,10:05,NA,6,10:11,10:11,NA,NA,NA,NA,37.2,65.4,32.1,No,0.31,Noise from closest box similar distance to wellpad; Listen for feed time when bird is outside of box feeding
+Yellow,Light,CP12,CP12B9,CP12B9_2024,WEBL,2,completed,Pink beads,Stimulus,2024,5/26/24,5,5,NA,Female,Male,KB-OS,WB-YS,10:41,10:43,NA,3,10:44,10:44,NA,10:43,NA,3,10:43,10:43,NA,NA,NA,NA,37.2,65.4,32.1,No,0.31,Noise from closest box similar distance to wellpad; Listen for feed time when bird is outside of box feeding
+Yellow,Light,CP12,CP12B9,CP12B9_2024,WEBL,3,completed,Green ball,Stimulus,2024,5/27/24,6,5,NA,Female,Male,KB-OS,WB-YS,10:14,10:19,NA,10,10:30,10:30,NA,10:17,NA,8,10:27,10:27,NA,NA,NA,NA,37.2,65.4,32.1,No,0.31,Noise from closest box similar distance to wellpad
+Green,Light,PC6,PC6B7,PC6B7_2024,WEBL,1,failed,Control,Control,2024,6/8/24,3,5,NA,Female,Male,GS-GG,UB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,36.6,68.5,33.4,No,0.6,
+Green,Light,PC6,PC6B7,PC6B7_2024,WEBL,2,completed,Green ball,Stimulus,2024,6/9/24,4,5,NA,Female,Male,GS-GG,UB,1:23,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,36.6,68.5,33.4,No,0.6,
+Green,Light,PC6,PC6B7,PC6B7_2024,WEBL,3,completed,Pink beads,Stimulus,2024,6/11/24,6,5,NA,Female,Male,GS-GG,UB,11:21,11:22,NA,0.5,11:22,11:22,NA,11:27,NA,0.5,11:27,11:27,NA,NA,NA,NA,36.6,68.5,33.4,No,0.6,
+Pink,Light+Noise,TP09,TP09B12,TP09B12_2024,WEBL,1,completed,Pink beads,Stimulus,2024,6/4/24,3,4,NA,Female,Male,UB,UB,12:40,12:50,NA,2,NA,NA,NA,12:59,NA,30,NA,NA,NA,NA,NA,NA,38.1,75.9,35.7,No,0.42,"Extremely windy, movement of blind may have impacted trial"
+Pink,Light+Noise,TP09,TP09B12,TP09B12_2024,WEBL,2,completed,Control,Control,2024,6/5/24,4,4,NA,Female,Male,UB,UB,11:25,11:30,NA,3,11:31,11:31,NA,11:31,NA,3.5,11:35,11:35,NA,NA,NA,NA,38.1,75.9,35.7,No,0.42,
+Pink,Light+Noise,TP09,TP09B12,TP09B12_2024,WEBL,3,completed,Green ball,Stimulus,2024,6/6/24,5,4,NA,Female,Male,UB,UB,11:26,11:32,NA,2.5,11:38,11:38,NA,11:32,NA,5,11:37,11:37,NA,NA,NA,NA,38.1,75.9,35.7,Yes,0.42,
+Pink,Light+Noise,TP09,TP09B15,TP09B15_2024,WEBL,1,completed,Green ball,Stimulus,2024,5/30/24,3,4,NA,Female,Male,YY-OS,UB,9:53,9:59,NA,0,9:59,9:59,NA,9:57,NA,0.5,9:59,9:59,NA,NA,NA,NA,44.4,75,43,No,0,
+Pink,Light+Noise,TP09,TP09B15,TP09B15_2024,WEBL,2,completed,Control,Control,2024,6/1/24,5,4,NA,Female,Male,YY-OS,UB,9:40,9:49,NA,20,9:51,9:51,NA,9:50,NA,1,NA,NA,NA,NA,NA,NA,44.4,75,43,No,0,
+Pink,Light+Noise,TP09,TP09B15,TP09B15_2024,WEBL,3,completed,Pink beads,Stimulus,2024,6/2/24,6,4,NA,Female,Male,YY-OS,UB,10:32,10:34,NA,21,10:37,10:37,NA,10:37,NA,0,10:43,10:43,NA,NA,NA,NA,44.4,75,43,No,0,
+Pink,Noise,TP10,TP10B7,TP10B7_2024,WEBL,1,failed,Green ball,Stimulus,2024,6/12/24,3,5,NA,Female,Male,UB,UB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43.4,65.4,42.5,No,0,Compressor was off during trial
+Pink,Noise,TP10,TP10B7,TP10B7_2024,WEBL,2,failed,Control,Control,2024,6/13/24,4,5,NA,Female,Male,UB,UB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43.4,65.4,42.5,No,0,
+Pink,Noise,TP10,TP10B7,TP10B7_2024,WEBL,3,completed,Pink beads,Stimulus,2024,6/15/24,6,5,NA,Female,Male,UB,UB,10:25,10:27,NA,0,10:27,10:27,NA,10:33,NA,0,10:33,10:33,NA,NA,NA,NA,43.4,65.4,42.5,Yes,0,
+Yellow,Light,CP12,CP12B13,CP12B13_2025,MOBL,1,completed,Green Ball,Stimulus,2025,5/13/25,4,3,23.9,Male,Female,YS-YY,UB,9:12:00,9:17:00,NA,4,NA,NA,NA,9:17:00,NA,0.6,9:20:00,9:19:00,NA,NA,NA,NA,32,68.1,29.1,Yes,0,Different feed and nest entry times. Female entered and exited box several times still holding food
+Yellow,Light,CP12,CP12B13,CP12B13_2025,MOBL,2,completed,Control,Control,2025,5/14/25,5,3,23.9,Male,Female,YS-YY,UB,8:57:00,9:01:00,NA,9.14,NA,NA,NA,9:02:00,NA,0.6,9:03:00,9:03:00,NA,NA,NA,NA,32,68.1,29.1,No,0,Chased SPTO away at the box early in trial 
+Yellow,Light,CP12,CP12B12,CP12B12_2025,MOBL,1,completed,Control,Control,2025,5/28/25,4,5,43.1,Male,Female,UB,RS-RR,9:22:49,9:41:03,NA,6.9,9:42:49,9:42:49,NA,9:28:30,NA,8.4,9:34:44,9:34:44,NA,NA,NA,NA,38.7,59.1,34.1,No,0.76,
+Yellow,Light,CP12,CP12B12,CP12B12_2025,MOBL,2,completed,Green Ball,Stimulus,2025,5/29/25,5,5,43.1,Male,Female,UB,RS-RR,10:59:05,11:00:30,NA,4,NA,NA,NA,11:00:30,NA,4,11:01:35,11:01:35,NA,NA,NA,NA,38.7,59.1,34.1,No,0.76,Male acting territorial in response to ATFL near box
+Green,Light,PC6,PC6B6,PC6B6_2025,MOBL,1,completed,Pink Beads,Stimulus,2025,5/31/25,4,4,21.5,Male,Female,UB,GM-KS,11:06:30,11:09:38,NA,6.8,11:10:04,11:10:04,NA,11:14:35,NA,0.61,11:14:47,11:14:47,NA,NA,NA,NA,28.2,68.4,25,Yes,0.19,
+Green,Light,PC6,PC6B6,PC6B6_2025,MOBL,2,completed,Control,Control,2025,6/1/25,5,4,25.9,Male,Female,UB,GM-KS,10:50:40,10:58:37,NA,0.61,10:59:08,10:59:08,NA,10:58:37,NA,0.61,11:05:15,11:05:15,NA,NA,NA,NA,33.3,67.3,27.4,Yes,0.19,
+Green,Noise,TP05,TP05B4,TP05B4_2025,MOBL,1,completed,Green Ball,Stimulus,2025,6/3/25,4,4,28.8,Male,Female,UB,UB,13:12:41,13:22:15,NA,8.9,13:22:15,13:22:15,NA,13:22:15,NA,8.9,NA,NA,NA,NA,NA,NA,46.7,73,44.1,Yes,0,"Truck drove by twice. Compressor temporarily off during period of the trial, pump still going and loud"
+Green,Noise,TP05,TP05B4,TP05B4_2025,MOBL,2,completed,Control,Control,2025,6/4/25,5,4,28.8,Male,Female,UB,UB,11:38:37,11:39:38,NA,0,11:39:39,11:39:39,NA,11:39:38,NA,4,NA,NA,NA,NA,NA,NA,45.9,72.1,42.9,Yes,0,"Truck drove by twice. Compressor temporarily off during period of the trial, pump still going and loud"
+Pink,Noise,TP10,TP10B6,TP10B6_2025,MOBL,1,completed,Control,Control,2025,6/21/25,4,3,32,Male,Female,UB,UB,9:26:56,9:30:40,NA,2,9:30:50,9:30:50,NA,9:39:55,NA,2,9:40:00,9:40:00,NA,NA,NA,NA,38.6,65.3,34.1,Yes,0,
+Pink,Noise,TP10,TP10B6,TP10B6_2025,MOBL,2,failed,Pink Beads,Stimulus,2025,6/22/25,5,0,32,Male,Female,UB,UB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,38.6,65.3,34.1,No,0,Failed after trial began. Snake entered box during trial and ate chicks
+Yellow,Light,CP12,CP12B6,CP12B6_2025,WEBL,1,completed,Control,Control,2025,5/7/25,5,5,45,Male,Female,WW-WS,WS-OB,9:44:00,9:53:12,NA,17,NA,NA,NA,10:01:50,NA,8,NA,NA,NA,NA,NA,NA,35.8,69.5,33.5,Yes,0,
+Yellow,Light,CP12,CP12B6,CP12B6_2025,WEBL,2,completed,Pink Beads,Stimulus,2025,5/8/25,6,5,45,Male,Female,WW-WS,WS-OB,8:38:00,8:41:00,NA,0,8:41:00,8:41:00,NA,8:40:00,NA,0,8:40:00,8:40:00,NA,NA,NA,NA,35.4,55.7,33.7,Yes,0,
+Yellow,Light,CP12,CP12B10,CP12B10_2025,WEBL,1,completed,Control,Control,2025,5/19/25,4,5,23.1,Male,Female,UB,BS-OY,8:26:00,8:31:57,NA,1.5,8:32:02,8:32:02,NA,8:27:40,NA,0.5,8:28:16,8:28:16,NA,NA,NA,NA,42.5,64.6,36,No,0,
+Yellow,Light,CP12,CP12B10,CP12B10_2025,WEBL,2,completed,Pink Beads,Stimulus,2025,5/20/25,5,5,23.1,Male,Female,UB,BS-OY,8:24:40,8:25:00,NA,2,8:25:40,8:25:40,NA,8:26:55,NA,1.5,8:27:05,8:27:05,NA,NA,NA,NA,42.5,64.6,36,Yes,0,
+Yellow,Light,CP12,CP12B8,CP12B8_2025,WEBL,1,completed,Pink Beads,Stimulus,2025,5/30/25,4,5,26.8,Male,Female,UB,GR-GS,8:10:53,8:18:20,NA,0.5,8:18:23,8:18:23,NA,8:13:15,NA,0.5,NA,NA,NA,NA,NA,NA,29.7,57.8,28,Yes,0,
+Yellow,Light,CP12,CP12B8,CP12B8_2025,WEBL,2,completed,Control,Control,2025,5/31/25,5,5,24.6,Male,Female,UB,GR-GS,7:32:17,7:35:32,NA,1,7:35:52,7:35:52,NA,7:45:32,NA,3,7:45:50,7:45:50,NA,NA,NA,NA,32.4,56.7,30.7,Yes,0,
+Yellow,Light,CP12,CP12B6,CP12B6_2025,WEBL,1,completed,Pink Beads,Stimulus,2025,6/29/25,4,5,47.9,Male,Female,WW-WS,WS-OB,8:31:30,8:42:23,NA,0,8:42:33,8:42:33,NA,8:33:55,NA,10,8:34:10,8:34:10,NA,NA,NA,NA,34.1,67.5,31.7,Yes,0,
+Yellow,Light,CP12,CP12B6,CP12B6_2025,WEBL,2,completed,Control,Control,2025,6/30/25,5,5,44.6,Male,Female,WW-WS,WS-OB,8:04:27,8:18:58,NA,0,8:18:58,8:18:58,NA,8:12:55,NA,0.5,8:12:58,8:12:58,NA,NA,NA,NA,35.8,73.6,33.8,Yes,0,Female seen at 8:07:00 at perch 20m away but appeared to be foraging. Truck drove by 8:17:20.
+Orange,Light,CP04,CP04B12,CP04B12_2025,WEBL,1,completed,Green Ball,Stimulus,2025,5/23/25,4,3,20.2,Male ,Female,YS-WW,UB,10:26:40,10:33:55,NA,2,10:34:10,10:34:10,NA,10:31:07,NA,2,10:33:30,10:33:30,NA,NA,NA,NA,43.3,73.7,26.3,No,0.99,A second WEBL pair was hanging around the box
+Orange,Light,CP04,CP04B12,CP04B12_2025,WEBL,2,completed,Control,Control,2025,5/24/25,5,3,20.2,Male ,Female,YS-WW,UB,10:37:48,10:47:26,NA,0,10:47:30,10:47:30,NA,10:39:05,NA,13.7,NA,NA,NA,NA,NA,NA,43.3,73.7,26.3,Yes,0.99,
+Orange,Noise,PT3,PT3B10,PT3B10_2025,WEBL,1,completed,Control,Control,2025,6/4/25,4,4,20.1,Male ,Female,UB,RO-BS,8:41:41,8:41:47,NA,0,8:41:53,8:41:53,NA,8:46:01,NA,0,8:46:03,8:46:03,NA,NA,NA,NA,26.1,65.5,23.6,Yes,0,Poor view of surrounding perches 
+Orange,Noise,PT3,PT3B10,PT3B10_2025,WEBL,2,completed,Green Ball,Stimulus,2025,6/5/25,4,4,20.1,Male ,Female,UB,RO-BS,10:35:32,10:38:38,NA,0,10:38:40,10:38:40,NA,10:42:09,NA,0,10:42:09,10:42:09,NA,NA,NA,NA,25.5,61.6,23.1,Yes,0,Poor view of surrounding perches 
+Green,Control,CP05,CP05B1,CP05B1_2025,WEBL,1,completed,Green Ball,Stimulus,2025,5/12/25,5,4,NA,Male ,Female,YS-KB,UB,9:15:00,9:18:00,NA,0,9:18:00,9:18:00,NA,9:20:00,NA,0,9:20:00,9:20:00,NA,NA,NA,NA,39.7,75.8,36,No,0,"Object fell within minute of start, no birds visibile, and was re-deployed. Start time is redeploy time."
+Green,Control,CP05,CP05B1,CP05B1_2025,WEBL,2,completed,Control,Control,2025,5/13/25,6,4,NA,Male ,Female,YS-KB,UB,10:55:00,10:59:00,NA,0,10:59:00,10:59:00,NA,10:57:00,NA,0.3,10:58:00,10:58:00,NA,NA,NA,NA,39.7,75.8,36,Yes,0,
+Green,Light,PC6,PC6B8,PC6B8_2025,WEBL,1,completed,Pink Beads,Stimulus,2025,5/21/25,4,5,27.7,Male ,Female,WB-OS,UB,7:45:40,7:46:38,NA,2,7:47:18,7:47:18,NA,7:49:45,NA,2,7:49:55,7:49:55,NA,NA,NA,NA,39.1,63.1,36.7,Yes,0.54,
+Green,Light,PC6,PC6B8,PC6B8_2025,WEBL,2,completed,Control,Control,2025,5/22/25,5,5,27.7,Male ,Female,WB-OS,UB,9:41:00,9:43:10,NA,0,9:43:10,9:43:10,NA,9:52:10,NA,1.5,9:52:38,9:52:38,NA,NA,NA,NA,34.3,64.9,27.1,Yes,0.54,
+Green,Light,PC6,PC6B3,PC6B3_2025,WEBL,1,completed,Control,Control,2025,6/1/25,4,4,25.4,Male ,Female,RW-KS,UB,11:53:04,11:58:27,NA,0,11:58:27,11:58:27,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,28.6,67.5,27,Yes,0.01,
+Green,Light,PC6,PC6B3,PC6B3_2025,WEBL,2,completed,Pink Beads,Stimulus,2025,6/2/25,5,4,25.4,Male ,Female,RW-KS,UB,9:25:35,NA,NA,NA,NA,NA,NA,9:30:20,NA,0.61,9:34:25,9:33:02,NA,NA,NA,NA,28.6,67.5,27,No,0.01,Raining during trial. Different feed and nest entry times. Female entered and exited box several times still holding food
+Green,Noise,TP05,TP05B5,TP05B5_2025,WEBL,1,completed,Pink Beads,Stimulus,2025,6/3/25,4,5,32.1,Male ,Female,GS-BB,OS-WR,14:01:41,14:02:13,NA,5.5,14:02:23,14:02:23,NA,14:01:41,NA,3,14:02:35,14:02:35,NA,NA,NA,NA,39.7,71.1,35.8,Yes,0,"Compressor temporarily off during period of the trial, pump still going and loud"
+Green,Noise,TP05,TP05B5,TP05B5_2025,WEBL,2,completed,Control,Control,2025,6/4/25,5,5,31.9,Male ,Female,GS-BB,OS-WR,12:26:36,12:35:53,NA,13.8,12:36:58,12:36:58,NA,12:37:28,NA,3,12:37:41,12:37:41,NA,NA,NA,NA,32.4,65.4,30.6,Yes,0,"Compressor temporarily off during period of the trial, pump still going and loud"
+Green,Light+Noise,TP07,TP07B14,TP07B14_2025,WEBL,1,completed,Control,Control,2025,6/7/25,4,3,26,Male ,Female,YS-GO,OR-KS,7:37:15,7:38:40,NA,3.5,7:39:05,7:39:05,NA,7:42:55,NA,0,7:42:55,7:42:55,NA,NA,NA,NA,34,61.2,31.2,Yes,0.41,
+Green,Light+Noise,TP07,TP07B14,TP07B14_2025,WEBL,2,completed,Pink Beads,Stimulus,2025,6/8/25,5,3,22.5,Male ,Female,YS-GO,OR-KS,10:55:30,11:03:48,NA,0,11:04:01,11:03:50,NA,10:57:22,NA,4,10:58:50,10:57:25,NA,NA,NA,NA,34.2,58.8,29.3,Yes,0.41,Different feed and nest entry times
+Blue,Light+Noise,TP02,TP02B15,TP02B15_2025,WEBL,1,failed,Control,Control,2025,5/22/25,4,3,19.2,Male,Female,RS-OY,OS-GR,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,30.1,65.9,27.7,Yes,1.19,Trial failed
+Blue,Light+Noise,TP02,TP02B15,TP02B15_2025,WEBL,2,failed,Control,Control,2025,5/23/25,5,3,19.2,Male,Female,RS-OY,OS-GR,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,30.1,65.9,27.7,No,1.19,"Trial failed, male present but did not do a pre-trial feed"
+Blue,Light,CP02,CP02B5,CP02B5_2025,WEBL,1,completed,Control,Control,2025,5/26/25,4,5,38.3,Male,Female,OS-KY,BS-RR,8:59:00,9:00:00,NA,11.7,9:00:50,9:00:35,NA,9:09:32,NA,0,9:09:32,9:09:32,NA,NA,NA,NA,39.2,68,37.7,Yes,0.45,Different feed and nest entry times for male
+Blue,Light,CP02,CP02B5,CP02B5_2025,WEBL,2,completed,Green Ball,Stimulus,2025,5/27/25,5,5,38.3,Male,Female,OS-KY,BS-RR,8:03:00,8:06:14,NA,1,8:06:27,8:06:27,NA,8:14:05,NA,0,8:14:05,8:14:05,NA,NA,NA,NA,41.2,64,39.1,Yes,0.45,
+Blue,Light,CP02,CP02B8,CP02B8_2025,WEBL,1,failed,Green Ball,Stimulus,2025,6/17/25,4,3,27,Male,Female,OS-RR,OO-OS,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43.7,77.3,41.3,Yes,0,"Trial failed, male approached multiple times but did not do a pre-trial feed"
+Blue,Light,CP02,CP02B8,CP02B8_2025,WEBL,2,completed,Green Ball,Stimulus,2025,6/18/25,5,3,27,Male,Female,OS-RR,OO-OS,8:57:00,8:58:00,NA,1,8:58:20,8:58:20,NA,8:58:00,NA,8,9:07:50,9:07:50,NA,NA,NA,NA,36.1,63.6,34.6,Yes,0,
+Blue,Light,CP02,CP02B8,CP02B8_2025,WEBL,3,completed,Control,Control,2025,6/19/25,6,3,27,Male,Female,OS-RR,OO-OS,9:01:40,9:09:00,NA,10,9:09:40,9:09:40,NA,9:02:52,NA,0,9:02:52,9:02:52,NA,NA,NA,NA,36.3,71.1,34.9,Yes,0,
+Pink,Light+Noise,TP09,TP09B13,TP09B13_2025,WEBL,1,completed,Control,Control,2025,6/16/25,4,4,21.32,Female,Male,BS-WG,UB,7:36:34,7:57:10,NA,0,7:57:10,7:57:10,NA,7:49:45,NA,0,7:50:09,7:50:09,NA,NA,NA,NA,48.1,77.9,46.9,Yes,0.45,
+Pink,Light+Noise,TP09,TP09B13,TP09B13_2025,WEBL,2,completed,Green Ball,Stimulus,2025,6/17/25,5,4,21.2,Female,Male,BS-WG,UB,7:46:23,7:49:21,NA,0.6,7:49:37,7:49:37,NA,7:48:31,NA,4,7:49:28,7:49:28,NA,NA,NA,NA,50.1,78.9,49.1,Yes,0.45,
+Blue,Control,CP01,CP01B5_2026,CP01B5_2026,MOBL,1,completed,Pink Beads,Stimulus,2026,4/22/26,6,4,77,Male,Female,UB,UB,9:20:34,9:26:20,NA,4,9:34:08,9:34:08,NA,9:26:17,NA,3,9:26:28,9:26:28,NA,NA,NA,NA,33.7,79.4,25.6,Yes,0,Very windy noise measurement B = 3
+Yellow,Light,CP12,CP12B13_2026,CP12B13_2026,MOBL,1,completed,Green Ball,Stimulus,2026,4/26/26,4,4,45.2,Male,Female,KS-GY,UB,8:57:24,8:58:02,NA,0.3,8:58:46,8:58:46,NA,8:59:30,NA,11.7,8:59:53,8:59:53,NA,NA,NA,NA,26.9,64.8,25.3,No,0.55,
+Yellow,Light,CP12,CP12B13_2026,CP12B13_2026,MOBL,2,completed,Control,Control,2026,4/27/26,5,4,45.2,Male,Female,KS-GY,UB,7:34:18,7:38:08,NA,27.3,7:38:56,7:38:56,NA,7:34:54,NA,15,7:37:48,7:37:48,NA,NA,NA,NA,31.2,59.9,26.1,Yes,0.55,
+Yellow,Light,CP12,CP12B14_2026,CP12B14_2026,MOBL,1,completed,Green Ball,Stimulus,2026,5/9/26,4,5,32,Female,Male,OR-KS,UB,7:23:26,7:26:39,NA,4.6,7:26:43,7:26:43,NA,7:34:00,NA,1,7:40:10,7:34:21,NA,NA,NA,NA,38.9,58.6,31.7,Yes,1.19,"Male entered box with no visible food, then again with food"
+Yellow,Light,CP12,CP12B14_2026,CP12B14_2026,MOBL,2,completed,Control,Control,2026,5/10/26,5,5,21,Female,Male,OR-KS,UB,8:09:50,8:14:59,NA,12,8:16:50,8:16:50,NA,8:13:12,NA,1,8:13:13,8:13:13,NA,NA,NA,NA,40.6,65.2,30.9,Yes,1.19,Moved blind location for better visibility 
+Orange,Control,CP06,CP06B3_2026,CP06B3_2026,MOBL,1,completed,Control,Control,2026,5/13/26,4,6,34,Female,Male,OS-GO,UB,10:24:44,10:32:07,NA,0,10:33:33,10:33:33,NA,10:35:00,NA,0,10:35:07,10:35:07,NA,NA,NA,NA,30.4,62.1,25.6,Yes,0,
+Orange,Control,CP06,CP06B3_2026,CP06B3_2026,MOBL,2,completed,Green Ball,Stimulus,2026,5/14/26,5,6,34,Female,Male,OS-GO,UB,10:09:04,10:26:45,NA,0,10:26:57,10:26:57,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,33.5,66,25.3,Yes,0,
+Red,Light,PC13,PC13B2_2026,PC13B2_2026,MOBL,1,partial_failure,Pink Beads,Stimulus,2026,5/16/26,4,3,38,Male,Female,UB,GS-OK,8:25:57,8:26:40,NA,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,39.5,70.7,32.2,No,0.06,Cicadas clicking in slm reading. Trial accidentally was stopped early. Male dragged beads off box.
+Red,Light,PC13,PC13B2_2026,PC13B2_2026,MOBL,2,completed,Control,Control,2026,5/17/26,5,3,38,Male,Female,UB,GS-OK,9:59:09,10:01:10,NA,10.6,10:14:53,10:14:53,NA,10:08:00,NA,2,10:08:40,10:08:40,NA,NA,NA,NA,39.5,70.7,32.2,Yes,0.06,Cicadas clicking in slm reading
+Red,Light,PC13,PC13B2_2026,PC13B2_2026,MOBL,3,completed,Pink Beads,Stimulus,2026,5/18/26,6,3,38,Male,Female,UB,GS-OK,6:44:40,6:50:12,NA,2,6:50:15,6:50:15,NA,6:44:40,NA,0.3,6:46:05,6:46:05,NA,NA,NA,NA,39.5,70.7,32.2,No,0.06,Cicadas clicking in slm reading
+Orange,Control,TP06,TP06B9_2026,TP06B9_2026,MOBL,1,completed,Control,Control,2026,5/17/26,4,5,31.4,Male,Female,UB,UB,11:32:43,11:45:54,NA,2,11:46:04,11:46:04,NA,11:43:35,NA,0,11:43:35,11:43:35,NA,NA,NA,NA,32.2,64.5,28.4,No,0,
+Orange,Control,TP06,TP06B9_2026,TP06B9_2026,MOBL,2,completed,Pink Beads,Stimulus,2026,5/18/26,5,5,31.4,Male,Female,UB,UB,10:14:23,10:15:20,NA,9.5,10:17:37,10:17:37,NA,10:18:45,NA,0,10:18:45,10:18:45,NA,NA,NA,NA,32.2,64.5,28.4,Yes,0,Female pecked at and removed beads from the nestbox. Both adults very agitated
+Orange,Light,TP04,TP04B11_2026,TP04B11_2026,MOBL,1,completed,Green Ball,Stimulus,2026,6/2/26,4,4,42.7,Female,Male,MR-RS,UB,6:25:59,6:29:39,NA,10.5,6:33:26,6:33:26,NA,6:32:57,NA,3,6:35:13,6:35:13,NA,NA,NA,NA,23.3,56.5,21.5,No,0.79,
+Orange,Light,TP04,TP04B11_2026,TP04B11_2026,MOBL,2,completed,Control,Control,2026,6/3/26,5,4,42.7,Female,Male,MR-RS,UB,6:22:46,6:23:10,NA,10.5,6:23:23,6:23:23,NA,6:23:10,NA,10.5,6:26:15,6:26:15,NA,NA,NA,NA,23.3,56.5,21.5,Yes,0.79,
+Blue,Control,CP01,CP01B2_2026,CP01B2_2026,WEBL,1,completed,Control,Control,2026,4/22/26,5,4,11,Male,Female,UB,UB,8:38:26,8:40:15,NA,0,8:40:17,8:40:15,NA,8:45:49,NA,0,8:45:49,8:45:49,NA,NA,NA,NA,38.2,49.1,29.6,Yes,0,
+Blue,Control,CP01,CP01B2_2026,CP01B2_2026,WEBL,2,completed,Green Ball,Stimulus,2026,4/23/26,6,4,11,Male,Female,UB,UB,9:10:54,9:13:52,NA,1,9:14:20,9:14:16,NA,9:10:54,NA,0,9:10:59,9:10:57,NA,NA,NA,NA,35,68.7,26.7,Yes,0,
+Yellow,Light,CP12,CP12B1_2026,CP12B1_2026,WEBL,1,completed,Control,Control,2026,4/23/26,4,4,28.2,Female,Male,BR-OS,UB,7:59:38,8:03:42,NA,1,8:03:46,8:03:46,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,32.6,69.9,29.5,Yes,0,"Female sole parent, male depredated"
+Yellow,Light,CP12,CP12B1_2026,CP12B1_2026,WEBL,2,completed,Pink Beads,Stimulus,2026,4/24/26,5,4,28.2,Female,Male,BR-OS,UB,8:45:35,8:47:50,NA,9.7,8:52:53,8:52:53,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,31.5,56.7,28.6,Yes,0,"Female sole parent, male depredated"
+Blue,Control,CP01,CP01B8_2026,CP01B8_2026,WEBL,1,completed,Control,Control,2026,4/27/26,4,4,48.4,Female,Male,UB,UB,10:12:47,NA,NA,NA,NA,NA,NA,10:14:22,NA,2.5,10:14:52,10:14:52,NA,NA,NA,NA,31.3,60.3,24.6,Yes,0,Different feed and nest entry times for male
+Blue,Control,CP01,CP01B8_2026,CP01B8_2026,WEBL,2,completed,Green Ball,Stimulus,2026,4/28/26,5,4,48.4,Female,Male,UB,UB,10:14:05,10:29:22,NA,2,10:29:46,10:29:46,NA,10:17:45,NA,25,10:22:34,10:22:11,NA,NA,NA,NA,32.1,77.2,24.5,Yes,0,
+Green,Light,PC6,PC6B8_2026,PC6B8_2026,WEBL,1,completed,Control,Control,2026,5/2/26,4,4,37,Female,Male,RS-OB,WB-OS,8:12:31,8:21:22,NA,2,8:21:28,8:21:28,NA,8:13:53,NA,0,8:13:53,8:13:53,NA,NA,NA,NA,41.6,68.3,38.4,Yes,0.54,
+Green,Light,PC6,PC6B8_2026,PC6B8_2026,WEBL,2,completed,Pink Beads,Stimulus,2026,5/3/26,5,4,37,Female,Male,RS-OB,WB-OS,7:54:21,7:55:38,NA,2,7:56:48,7:56:48,NA,7:55:40,NA,2,7:56:18,7:56:00,NA,NA,NA,NA,39.1,70.9,36.7,Yes,0.54,Different feed and nest entry times for male
+Green,Noise,TP05,TP05B4_2026,TP05B4_2026,WEBL,1,completed,Control,Control,2026,5/4/26,4,5,39,Male,Female,GS-BB,OS-WR,9:19:58,9:29:19,NA,0,9:29:19,9:29:19,NA,9:28:30,NA,1,9:35:13,9:35:13,NA,NA,NA,NA,49.4,68.2,48.3,Yes,0,Female approached three times before feeding
+Green,Noise,TP05,TP05B4_2026,TP05B4_2026,WEBL,2,completed,Green Ball,Stimulus,2026,5/5/26,5,5,39,Male,Female,GS-BB,OS-WR,9:48:21,9:54:59,NA,8,9:59:27,9:59:27,NA,9:55:33,NA,1,9:55:29,9:55:29,NA,NA,NA,NA,47.8,70.5,46.7,Yes,0,Female pushed ball of box at 9:58:02. Ball off box when male fed
+Blue,Noise,TP02,TP02B5_2026,TP02B5_2026,WEBL,1,completed,Green Ball,Stimulus,2026,5/5/26,4,4,27,Male,Female,UB,UB,8:15:30,8:20:04,NA,0.5,8:20:10,8:20:10,NA,8:15:30,NA,19,NA,NA,NA,NA,NA,NA,42.3,66.7,41.3,Yes,0,
+Blue,Noise,TP02,TP02B5_2026,TP02B5_2026,WEBL,2,completed,Control,Control,2026,5/6/26,5,4,27,Male,Female,UB,UB,8:43:29,8:49:51,NA,1,8:55:12,8:55:06,NA,8:43:14,NA,8,NA,NA,NA,NA,NA,NA,42.8,65.3,41.7,Yes,0,Male possibly fed female. Female flying around with food near box but never fed
+Yellow,Light,CP12,CP12B4_2026,CP12B4_2026,WEBL,1,completed,Control,Control,2026,5/6/26,5,4,47,Female,Male,WB-OS,UB,10:19:04,10:21:08,NA,31,10:21:55,10:21:55,NA,10:19:40,NA,31,10:19:56,10:19:56,NA,NA,NA,NA,29.7,75.3,26.9,Yes,0,Might need to listen. Different approach thresholds were used between these trials
+Yellow,Light,CP12,CP12B4_2026,CP12B4_2026,WEBL,2,completed,Pink Beads,Stimulus,2026,5/7/26,6,4,47,Female,Male,WB-OS,UB,9:21:15,9:31:35,NA,3,9:32:15,9:32:15,NA,9:27:20,NA,1.5,9:27:30,9:27:30,NA,NA,NA,NA,33.4,63.3,30.8,Yes,0,Might need to listen. Different approach thresholds were used between these trials
+Orange,Control,CP06,CP06B8_2026,CP06B8_2026,WEBL,1,completed,Pink Beads,Stimulus,2026,5/9/26,4,5,49,Male,Female,KS-YR,MS-GO,9:27:14,NA,NA,NA,NA,NA,NA,9:32:30,NA,1.5,9:32:33,9:32:33,NA,NA,NA,NA,32.6,69,25.7,Yes,0,
+Orange,Control,CP06,CP06B8_2026,CP06B8_2026,WEBL,2,completed,Control,Control,2026,5/10/26,5,5,49,Male,Female,KS-YR,MS-GO,9:55:47,NA,NA,NA,NA,NA,NA,9:58:30,NA,8,10:02:37,10:02:37,NA,NA,NA,NA,27.6,64,21.9,Yes,0,
+Green,Light,PC6,PC6B10_2026,PC6B10_2026,WEBL,1,completed,Green Ball,Stimulus,2026,5/19/26,4,6,16,Female,Male,UB,S,9:21:04,NA,NA,NA,9:31:36,9:31:32,NA,9:24:09,NA,7.8,9:31:16,9:31:14,NA,NA,NA,NA,35.5,61.7,28.4,Yes,0,Potential female approach was obscured. 
+Green,Light,PC6,PC6B10_2026,PC6B10_2026,WEBL,2,completed,Control,Control,2026,5/20/26,5,6,18,Female,Male,UB,S,9:30:52,9:35:55,NA,0,9:35:55,9:35:55,NA,9:35:25,NA,3.5,9:36:10,9:36:10,NA,NA,NA,NA,30.6,59.4,28.4,Yes,0,
+Blue,Light,CP02,CP02B5_2026,CP02B5_2026,WEBL,1,completed,Pink Beads,Stimulus,2026,5/26/26,6,4,32.4,Male,Female,OS-RR,UB,7:11:28,7:28:02,NA,1,7:28:04,7:28:04,NA,7:17:51,NA,1,7:18:26,7:18:26,NA,NA,NA,NA,41,61.4,39.8,Yes,0.67,
+Blue,Light,CP02,CP02B5_2026,CP02B5_2026,WEBL,2,completed,Control,Control,2026,5/27/26,7,4,32.4,Male,Female,OS-RR,UB,6:48:34,6:54:13,NA,4,6:54:42,6:54:42,NA,6:54:58,NA,1,7:07:06,7:07:06,NA,NA,NA,NA,40.1,63.2,39.4,Yes,0.67,
+Pink,Light+Noise,TP09,TP09B13_2026,TP09B13_2026,WEBL,1,completed,Control,Control,2026,5/28/26,4,6,37,Male,Female,UB,UB,9:33:01,9:39:20,NA,0,9:39:20,9:39:20,NA,9:42:21,NA,4.5,9:43:26,9:43:26,NA,NA,NA,NA,44,64.9,41.1,Yes,0.55,
+Pink,Light+Noise,TP09,TP09B13_2026,TP09B13_2026,WEBL,2,completed,Pink Beads,Stimulus,2026,5/29/26,5,6,37,Male,Female,UB,UB,10:07:25,10:19:00,NA,2,10:19:20,10:19:20,NA,10:10:21,NA,20,10:19:49,10:19:49,NA,NA,NA,NA,49.1,78.3,48.1,Yes,0.55,
+Yellow,Light,CP12,CP12B6_2026,CP12B6_2026,WEBL,1,completed,Control,Control,2026,6/1/26,5,5,58.8,Female,Male,KB-OS,UB,7:45:18,7:49:22,NA,0.5,7:50:42,7:50:42,NA,7:52:53,NA,1.5,7:53:20,7:53:20,NA,NA,NA,NA,38.9,74.6,34.5,Yes,0,
+Yellow,Light,CP12,CP12B6_2026,CP12B6_2026,WEBL,2,completed,Green Ball,Stimulus,2026,6/2/26,6,5,58.8,Female,Male,KB-OS,UB,7:25:48,7:27:57,NA,0,7:38:45,7:38:45,NA,7:33:09,NA,23,7:34:09,7:34:09,NA,NA,NA,NA,37.8,69.9,34.5,Yes,0,
+Yellow ,Light,CP12,CP12B15_2026,CP12B15_2026,WEBL,1,completed,Pink Beads,Stimulus,2026,6/4/26,4,4,29,Female,Male,??-OS,UB,7:22:11,7:23:24,NA,1,7:23:28,7:23:28,NA,7:30:58,NA,1,7:31:00,7:31:00,NA,NA,NA,NA,33.5,62.9,31.3,Yes,0,
+Yellow ,Light,CP12,CP12B15_2026,CP12B15_2026,WEBL,2,completed,Control,Control,2026,6/5/26,5,4,29,Female,Male,??-OS,UB,10:38:31,10:42:40,NA,0,10:42:40,10:42:40,NA,10:41:53,NA,0,10:41:53,10:41:53,NA,NA,NA,NA,29.5,61,27.6,Yes,0,
+Green,Light,PC6,PC6B3_2026,PC6B3_2026,WEBL,1,failed,Control,Control,2026,6/7/26,5,4,38,Female,Male,OS-WR,GS-BB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,38.7,54.9,33.7,No,0.53,
+Green,Light,PC6,PC6B3_2026,PC6B3_2026,WEBL,2,completed,Control,Control,2026,6/8/26,6,4,38,Female,Male,OS-WR,GS-BB,11:28:34,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,38.7,54.9,33.7,Yes,0.53,
+Green,Light,PC6,PC6B3_2026,PC6B3_2026,WEBL,3,completed,Pink Beads,Stimulus,2026,6/9/26,7,4,38,Female,Male,OS-WR,GS-BB,11:30:55,11:31:26,NA,0.5,NA,NA,NA,11:36:33,NA,0,11:38:50,11:38:50,NA,NA,NA,NA,38.7,54.9,33.7,No,0.53,"Female flew away with beads at 11:31:43, before male approached and fed"
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,, ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
