@@ -59,12 +59,20 @@ neo_trials_latencies <- neo_trials |>
                                     is.na(bird1_feed_latency_min) & !is.na(bird2_feed_latency_min) ~ bird2_sex,
                                     bird1_feed_latency_min < bird2_feed_latency_min ~ bird1_sex,
                                     bird1_feed_latency_min > bird2_feed_latency_min ~ bird2_sex),
+         first_feed_ID = case_when(is.na(bird2_feed_latency_min) & !is.na(bird1_feed_latency_min) ~ bird1_bands, # Add first feed sex
+                                   is.na(bird1_feed_latency_min) & !is.na(bird2_feed_latency_min) ~ bird2_bands,
+                                   bird1_feed_latency_min < bird2_feed_latency_min ~ bird1_bands,
+                                   bird1_feed_latency_min > bird2_feed_latency_min ~ bird2_bands),
          .after = first_feed_latency_min) |>
   # Add first approach sex
   mutate(first_approach_sex = case_when(is.na(bird2_approach_latency_min) & !is.na(bird1_approach_latency_min) ~ bird1_sex,
                                     is.na(bird1_approach_latency_min) & !is.na(bird2_approach_latency_min) ~ bird2_sex,
                                     bird1_approach_latency_min < bird2_approach_latency_min ~ bird1_sex,
                                     bird1_approach_latency_min > bird2_approach_latency_min ~ bird2_sex),
+         first_approach_ID = case_when(is.na(bird2_approach_latency_min) & !is.na(bird1_approach_latency_min) ~ bird1_bands,
+                                        is.na(bird1_approach_latency_min) & !is.na(bird2_approach_latency_min) ~ bird2_bands,
+                                        bird1_approach_latency_min < bird2_approach_latency_min ~ bird1_bands,
+                                        bird1_approach_latency_min > bird2_approach_latency_min ~ bird2_bands),
          .after = first_approach_latency_min)
 
 # TP02B5 typo, bird 2 approach before trial start - need to go and figure out what happened there
