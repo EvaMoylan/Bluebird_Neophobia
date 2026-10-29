@@ -53,7 +53,19 @@ neo_trials_latencies <- neo_trials |>
            .after = bird2_feed_latency_min) |>
   relocate(bird1_entry_latency_min, 
            .after = bird1_feed_latency_min) |>
-  select(-c(first_approach_latency_s, first_feed_latency_s, first_entry_latency_s)) # Remove some blank columns leftover from initial dataset
+  select(-c(first_approach_latency_s, first_feed_latency_s, first_entry_latency_s)) |> # Remove some blank columns leftover from initial dataset
+  # Add first feed sex
+  mutate(first_feed_sex = case_when(is.na(bird2_feed_latency_min) & !is.na(bird1_feed_latency_min) ~ bird1_sex, # Add first feed sex
+                                    is.na(bird1_feed_latency_min) & !is.na(bird2_feed_latency_min) ~ bird2_sex,
+                                    bird1_feed_latency_min < bird2_feed_latency_min ~ bird1_sex,
+                                    bird1_feed_latency_min > bird2_feed_latency_min ~ bird2_sex),
+         .after = first_feed_latency_min) |>
+  # Add first approach sex
+  mutate(first_approach_sex = case_when(is.na(bird2_approach_latency_min) & !is.na(bird1_approach_latency_min) ~ bird1_sex,
+                                    is.na(bird1_approach_latency_min) & !is.na(bird2_approach_latency_min) ~ bird2_sex,
+                                    bird1_approach_latency_min < bird2_approach_latency_min ~ bird1_sex,
+                                    bird1_approach_latency_min > bird2_approach_latency_min ~ bird2_sex),
+         .after = first_approach_latency_min)
 
 # TP02B5 typo, bird 2 approach before trial start - need to go and figure out what happened there
 
