@@ -59,7 +59,7 @@ neo_trials_latencies <- neo_trials |>
                                     is.na(bird1_feed_latency_min) & !is.na(bird2_feed_latency_min) ~ bird2_sex,
                                     bird1_feed_latency_min < bird2_feed_latency_min ~ bird1_sex,
                                     bird1_feed_latency_min > bird2_feed_latency_min ~ bird2_sex),
-         first_feed_ID = case_when(is.na(bird2_feed_latency_min) & !is.na(bird1_feed_latency_min) ~ bird1_bands, # Add first feed sex
+         first_feed_bands = case_when(is.na(bird2_feed_latency_min) & !is.na(bird1_feed_latency_min) ~ bird1_bands, # Add first feed sex
                                    is.na(bird1_feed_latency_min) & !is.na(bird2_feed_latency_min) ~ bird2_bands,
                                    bird1_feed_latency_min < bird2_feed_latency_min ~ bird1_bands,
                                    bird1_feed_latency_min > bird2_feed_latency_min ~ bird2_bands),
@@ -69,7 +69,7 @@ neo_trials_latencies <- neo_trials |>
                                     is.na(bird1_approach_latency_min) & !is.na(bird2_approach_latency_min) ~ bird2_sex,
                                     bird1_approach_latency_min < bird2_approach_latency_min ~ bird1_sex,
                                     bird1_approach_latency_min > bird2_approach_latency_min ~ bird2_sex),
-         first_approach_ID = case_when(is.na(bird2_approach_latency_min) & !is.na(bird1_approach_latency_min) ~ bird1_bands,
+         first_approach_bands = case_when(is.na(bird2_approach_latency_min) & !is.na(bird1_approach_latency_min) ~ bird1_bands,
                                         is.na(bird1_approach_latency_min) & !is.na(bird2_approach_latency_min) ~ bird2_bands,
                                         bird1_approach_latency_min < bird2_approach_latency_min ~ bird1_bands,
                                         bird1_approach_latency_min > bird2_approach_latency_min ~ bird2_bands),
@@ -114,4 +114,4 @@ neo_trials_censor |> count(approach_censor) # 4 censored trials of 112 total com
 neo_trials_censor |> count(entry_censor) # 13 censored trials of 112 total completed  
 
 # Save censored data
-write_csv(neo_trials_censor, here("Data","Censor_BBNeophobia_261025.csv"))
+write_csv(neo_trials_censor, here("Outputs","Censor_BBNeophobia_261025.csv"))

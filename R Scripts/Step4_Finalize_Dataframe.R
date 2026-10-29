@@ -13,7 +13,7 @@ library(here)
 library(geosphere)
 
 # Load main neophobia assay dataset from Step 1 - probably should convert all these to .rds
-neo_trials_censor <- read_csv(here("Data","Censor_BBNeophobia_261025.csv"))
+neo_trials_censor <- read_csv(here("Outputs","Censor_BBNeophobia_261025.csv"))
 # Maybe re-organize these steps to avoid intermediate files
 
 ######################### Add missing blind distances ##########################
@@ -35,7 +35,7 @@ hide_dist <- left_join(hide_coords, box_coords, by = "nest_box") |>
   select(nest_box, hide_distance_m, date)
 
 # Fill in the missing distances in the main dataset
-neo_trials_main <- left_join(neo_trials_censor, hide_dist, by = c("nest_box", "date")) |>
+neo_trials_hide <- left_join(neo_trials_censor, hide_dist, by = c("nest_box", "date")) |>
   mutate(hide_distance_m = coalesce(hide_distance_m.x, hide_distance_m.y),
          hide_distance_m = case_when(nest_id == "CP02B1_2024" ~ 23.85523, .default = hide_distance_m), # One trial for this nest didn't assign the distance so manually assign
          .after = chick_number) |>
@@ -45,10 +45,10 @@ neo_trials_main <- left_join(neo_trials_censor, hide_dist, by = c("nest_box", "d
 ######################## Add percent canopy cover data #########################
 
 # Load 40m radius percent canopy cover data from Step 2
-final_lidar <- read_csv(here("Data", "lidar_metrics_40m_canopy.csv"))
+final_lidar <- read_csv(here("Outputs", "lidar_metrics_40m_canopy.csv"))
 
 # Join with the main dataset
-neo_trials_main <- neo_trials_main |>
+neo_trials_lidar <- neo_trials_hide |>
   left_join(final_lidar, by = "nest_box") |>
   select(-(point:rumple)) |>
   rename(percent_canopy = perc_can) |>
@@ -57,7 +57,23 @@ neo_trials_main <- neo_trials_main |>
 ################### Add AudioMoth sound pressure level data ####################
 
 # Load all AM data
+AM_24 <- read_csv(here("Data", "2024_AM_AverageSPL.csv"))
+AM_25 <- read_csv(here("Data", "2025_AM_AverageSPL.csv"))
+AM_26 <- read_csv(here("Data", "2026_AM_AverageSPL.csv"))
 
-# Save main cleaned dataframe
-write_csv(neo_trials_main, here("Data","Main_BBNeophobia_261025.csv"))
+# Bind into one dataframe
+AM_spl <- bind_rows(AM_24, AM_25, AM_26)
+
+# Save as an RDS
+write_rds(AM_spl, here("Outputs", "All_Audiomoth_SPL.rds"))
+
+# Filter and inspect AM data
+#neo_trials_AM <- 
+
+# Join audiomoth SPL with neophobia dataframe
+#neo_trials_main <- neo_trials_AM |> 
+  
+
+### Save main cleaned neophobia dataframe for analysis ###
+write_csv(neo_trials_lidar, here("Outputs","Main_BBNeophobia_261025.csv"))
 
