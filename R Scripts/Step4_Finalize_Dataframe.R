@@ -12,8 +12,8 @@ library(tidyverse)
 library(here)
 library(geosphere)
 
-# Load main neophobia assay dataset from Step 1 - probably should convert all these to .rds
-neo_trials_censor <- read_csv(here("Outputs","Censor_BBNeophobia_261025.csv"))
+# Load main neophobia assay dataset from Step 1
+neo_trials_censor <- read_rds(here("Outputs","Censor_BBNeophobia.rds"))
 # Maybe re-organize these steps to avoid intermediate files
 
 ######################### Add missing blind distances ##########################
@@ -75,5 +75,5 @@ write_rds(AM_spl, here("Outputs", "All_Audiomoth_SPL.rds"))
   
 
 ### Save main cleaned neophobia dataframe for analysis ###
-write_csv(neo_trials_lidar, here("Outputs","Main_BBNeophobia_261025.csv"))
+write_rds(neo_trials_lidar, here("Outputs","Main_BBNeophobia.rds"))
 

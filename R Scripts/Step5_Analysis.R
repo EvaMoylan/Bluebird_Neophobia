@@ -10,25 +10,33 @@
 library(tidyverse)
 library(here)
 library(glmmTMB)
-library(lme4)
 library(performance)
 library(see)
 library(rptR)
 library(survival)
 library(coxme)
 library(modelr)
+library(MuMIn)
+library(survminer)
+library(lme4)
 
 # Load in cleaned and censored dataframe
-final_neo <- read_csv(here("Data","Main_BBNeophobia_261025.csv")) |>
-  mutate(first_approach_latency_min = ifelse(row_number() == 113, 0, first_approach_latency_min)) # Replace this trial with 0 for now, need to listen to recording 
+final_neo <- read_rds(here("Outputs","Main_BBNeophobia.rds"))
 
 # Create WEBL only dataframe
 final_webl <- final_neo |>
-  filter(species == "WEBL")
+  filter(species == "WEBL") |>
+  mutate(as.numeric(chick_number)) |>
+  mutate(as.numeric(nest_age)) |>
+  mutate(as.numeric(hide_distance_m))
 
 # Create MOBL only dataframe
 final_mobl <- final_neo |>
   filter(species == "MOBL")
+
+final_webl |> count(feed_censor) # 13 censored trials, 99 observed, 18 NA
+final_neo |> count(approach_censor) # 4 censored trials, 108 observed, 18 NA
+final_neo |> count(diff_censor) # 9 censored trials of 99 observed, 22 NA
 
 ################################################################################
 ##################### Variable Exploration and Selection #######################
@@ -38,7 +46,6 @@ final_mobl <- final_neo |>
 
 # Latency to feed (LTF)
 hist(final_neo$first_feed_latency_min) # Right-skew
-# Can't take log(0), do more research on if adding a constant is appropriate
 hist(log(final_neo$first_feed_latency_min + 1)) # Normal
 
 # Latency to approach (LTA)
@@ -46,18 +53,26 @@ hist(final_neo$first_approach_latency_min) # Right-skew
 hist(log(final_neo$first_approach_latency_min + 1)) # Normal
 
 # Approach to feed latency (AFL)
-hist(final_neo$diff_approach_feed_min) # Right-skew, primarily 0s - coxme models can handle this better than glmm
-hist(log(final_neo$diff_approach_feed_min + 1)) # Still right-skew but slightly less dramatic
+hist(final_neo$diff_approach_prov_min) # Right-skew, primarily 0s - coxme models can handle this better than glmm
+hist(sqrt(final_neo$diff_approach_prov_min)) # Still right-skew but slightly less dramatic
 
-# Test correlation between first nest entry and first feed latencies
-cor.test(final_neo$first_feed_latency_min, final_neo$first_entry_latency_min, na.action = na.omit)
-# 100% correlated - use feed latency going forward
+ggplot(final_neo, aes(x = LAeq_slm_dB, y = light_level_lux, color = treatment)) +
+  geom_jitter(width = 0.12, height = 0.12, size = 2.5, alpha = 0.75) +
+  labs(
+    x = "Noise",
+    y = "Light",
+    color = "Treatment type"
+  ) +
+  theme_classic()
+
 
 ### WEBL data distributions ###
 
 # Latency to feed (LTF)
 hist(final_webl$first_feed_latency_min) # Right-skew
+hist(sqrt(final_webl$first_feed_latency_min)) # Normal
 hist(log(final_webl$first_feed_latency_min + 1)) # Normal
+
 
 # Latency to approach (LTA)
 hist(final_webl$first_approach_latency_min) # Right-skew
@@ -66,6 +81,22 @@ hist(log(final_webl$first_approach_latency_min + 1)) # Normal
 # Approach to feed latency (AFL)
 hist(final_webl$diff_approach_feed_min) # Right-skew, primarily 0
 hist(log(final_webl$diff_approach_feed_min + 1)) # Right-skew but less dramatic
+
+# Hide distance
+hist(final_webl$hide_distance_m) # Normal
+
+# Canopy cover
+hist(final_webl$percent_canopy) # Normal
+
+ggplot(final_webl, aes(x = LAeq_slm_dB, y = light_level_lux, color = treatment)) +
+  geom_jitter(width = 0.12, height = 0.12, size = 2.5, alpha = 0.75) +
+  labs(
+    x = "Noise",
+    y = "Light",
+    color = "Treatment type"
+  ) +
+  theme_classic()
+
 
 ### MOBL data distributions ###
 
@@ -80,23 +111,196 @@ hist(log(final_mobl$first_approach_latency_min + 1)) # Normal-ish, 0 still skewi
 hist(final_mobl$diff_approach_feed_min) # Right-skew, primarily 0
 hist(log(final_mobl$diff_approach_feed_min + 1)) # Slight right-skew but much more even
 
-########################## Variance of random effects ##########################
+# Hide distance
+hist(final_mobl$hide_distance_m) # Normal
 
-# Look at entire dataset first, if there's justification to reduce nested effects look at individual species
+# Canopy cover
+hist(final_mobl$percent_canopy) # Normal
 
-# [LTF] - What is the variance of the ideal random effects structure?
-random_LTF <- glmmTMB(log(first_feed_latency_min + 1) ~ 1 + (1 | nest_id/site/section/year), data = final_neo, REML = T)
-summary(random_LTF)
+################################################################################
+########################## Western Bluebird Modeling ###########################
+################################################################################
 
-# [LTA] - What is the variance of the ideal random effects structure?
-random_LTA <- glmmTMB(log(first_approach_latency_min + 1) ~ 1 + (1 | nest_id/site/section/year), data = final_neo, REML = T)
-summary(random_LTA)
+# How many total WEBL trials of each are there in the whole dataset (2024-2026)?
+final_webl |> 
+  filter(!is.na(trial_start_time_hms)) |> # Remove trials that never started
+  count(stimulus_object, # Sample good overall: 33 Control (2 cens.), 18 Green Ball (2 cens.), 23 Pink Beads (1 cens.)
+        appr_censored = approach_censor == 0, 
+        feed_censored = feed_censor == 0)
 
-# [AFL] - What is the variance of the ideal random effects structure?
-random_AFL <- glmmTMB(log(diff_approach_feed_min + 1) ~ 1 + (1 | nest_id/site/section/year), data = final_neo, REML = T)
-summary(random_AFL)
+# Filter a non-censored data set for glmm exploration
+# Preliminary covariate models dropping censored trials (only 5 censored trials)
+final_webl_nc <- final_webl |>
+  filter(feed_censor != 0)
 
-# Variances are different for each response variable, so use the most complex structure for all models going forward
+######################## Latency to provision (minutes) ########################
+
+#### Trial categorization ####
+# Primary hypotheses are structured around comparison between trial types (control v. stimulus)
+# So, confirm that this is still sound with all three years of data
+# Nested random effects structure simplified due to consistently low variance across sites and section groups. Year retained to include annual fluctuation in resources and habitat conditions.
+
+# Fit a simple model with purely hypothesis variables using trial type (control vs. stimulus)
+type_mod <- glmmTMB(log(first_feed_latency_min + 1) ~ scale(LAeq_slm_dB)*scale(light_level_lux) + trial_type*scale(LAeq_slm_dB) + trial_type*scale(light_level_lux) + scale(hide_distance_m) + (1 | year/nest_id), REML = FALSE, data = final_webl_nc)
+summary(type_mod)
+check_model(type_mod)
+
+# Fit a simple model with purely hypothesis variables using object type (control vs. pink beads vs green ball)
+obj_mod <- glmmTMB(log(first_feed_latency_min + 1) ~ scale(LAeq_slm_dB)*scale(light_level_lux) + stimulus_object*scale(LAeq_slm_dB) + stimulus_object*scale(light_level_lux) + scale(hide_distance_m) + (1 | year/nest_id), REML = FALSE, data = final_webl_nc)
+summary(obj_mod) # Interactive effects of noise or light and objects on latency are in same direction - can combine
+check_model(obj_mod)
+  
+# Rank trial models
+model.sel(type_mod, obj_mod, rank = "AICc") # Trial type strongly out performs object, statistical support for decision to combine them 
+
+#### Exploration of ecologically relevant covariates ####
+# Hide distance will be included in primary models regardless of apparent effect due to our presence during the trial
+# Other variables with strongest support for impacting provisioning rate in bluebirds are nest age, number of chicks, and adult sex
+
+# Include adult sex within primary hypothesis structure 
+sex_mod <- glmmTMB(log(first_feed_latency_min + 1) ~ scale(LAeq_slm_dB)*scale(light_level_lux) + trial_type*scale(LAeq_slm_dB) + trial_type*scale(light_level_lux) + first_feed_sex + (1 | year/nest_id), data = final_webl_nc)
+summary(sex_mod) # Sex has no effect on provisioning latency
+check_model(sex_mod) # Good fit
+
+# Include nest age within primary  hypothesis structure 
+age_mod <- glmmTMB(log(first_feed_latency_min + 1) ~ scale(LAeq_slm_dB)*scale(light_level_lux) + trial_type*scale(LAeq_slm_dB) + trial_type*scale(light_level_lux) + scale(nest_age) + (1 | year/nest_id), data = final_webl_nc)
+summary(age_mod) # Nest age appears to have some very minor influence when using a very generous z value of >1
+check_model(age_mod) # Good fit
+
+# Include chick number within primary hypothesis structure 
+chx_mod <- glmmTMB(log(first_feed_latency_min + 1) ~ scale(LAeq_slm_dB)*scale(light_level_lux) + trial_type*scale(LAeq_slm_dB) + trial_type*scale(light_level_lux) + scale(chick_number) + (1 | year/nest_id), data = final_webl_nc)
+summary(chx_mod)  # Chick number appears to have some very minor influence when using a very generous z value of >1
+check_model(chx_mod)
+
+# Confirms decision to not include in primary model which would have been done regardless to avoid overfitting, move forward without
+
+#### Cox mixed effects models ####
+# Fit four primary models: 
+# 1 - Two-way interactions between slm noise, light, trial type
+# 2 - Three-way interaction between slm noise, light, trial type
+# 3 - Two-way interactions between audiomoth noise, light, trial type
+# 4 - Three-way interaction between audiomoth noise, light, trial type
+
+final_webl <- final_webl |>
+  mutate(year = as.character(year),
+         nest_id = as.character(nest_id))
+
+# MODEL #1 - Fit slm noise, light, trial type two-way interactions model 
+webl_LTP_1 <- coxme(Surv(first_feed_latency_min, feed_censor) ~ scale(LAeq_slm_dB)*scale(light_level_lux) + trial_type*scale(LAeq_slm_dB) + trial_type*scale(light_level_lux) + scale(hide_distance_m) + (1 | year/nest_id), data = final_webl)
+summary(webl_LTP_1)
+
+webl_LTP_1 <- coxme(Surv(first_feed_latency_min, feed_censor) ~ scale(LAeq_slm_dB)*scale(light_level_lux) + trial_type*scale(LAeq_slm_dB) + trial_type*scale(light_level_lux) + scale(chick_number) + (1 | year/nest_id), data = final_webl)
+summary(webl_LTP_1)
+
+webl_LTP_1 <- coxme(Surv(first_feed_latency_min, feed_censor) ~ scale(LAeq_slm_dB)*scale(light_level_lux) + trial_type*scale(LAeq_slm_dB) + trial_type*scale(light_level_lux) + scale(nest_age) + (1 | year/nest_id), data = final_webl)
+summary(webl_LTP_1)
+
+# Notes:
+# coxme models have no intercept
+
+# From a previous re structure for webl_LTP_1 coxme model:
+# Site and section explain near zero variance - remove
+#Random effects
+#Group                     Variable    Std Dev      Variance    
+#year/section/site/nest_id (Intercept) 3.445044e-01 1.186833e-01
+#year/section/site         (Intercept) 1.217354e-02 1.481951e-04
+#year/section              (Intercept) 9.996748e-03 9.993497e-05
+#year                      (Intercept) 3.208670e-01 1.029557e-01
+
+# Run cox proportional hazard model without random effects just to visualize residuals to see if this fixed effect structure is violating hazard assumptions
+# datanovia.com/learn/biostatistics/survival-analysis/testing-ph-assumptions
+webl_LTP_1ph <- coxph(Surv(first_feed_latency_min, feed_censor) ~ scale(LAeq_slm_dB)*scale(light_level_lux) + trial_type*scale(LAeq_slm_dB) + trial_type*scale(light_level_lux) + scale(hide_distance_m), data = final_webl)
+summary(webl_LTP_1ph) # Results don't appear to change much
+
+# Pretty sure this is NOT necessary for this type of hypothesis testing because it is statisical inference
+concordance(webl_LTP_1ph) # 63% of the time the model is correctly predicting events - but Hartman et al. 2024 recommends other methods of validation (medical context though) and Zoccali & Tripepi, 2025
+
+# coxme package (Therneau, 2026)
+anova(webl_LTP_1, webl_LTP_1ph) # It looks like inclusion of random effects doesn't explain more variance than a simple model with no random effects... so I feel comfortable evaluation based on simple ph model
+
+# Scaled Schoenfeld residuals
+ggcoxdiagnostics(webl_LTP_1ph, 
+                 type = "scaledsch", # Does the variable effect change over time (i.e. violation of hazard assumptions)
+                 ox.scale = "time", # Use time 
+                 hline = TRUE,
+                 ggtheme = theme_bw())
+# Looks pretty good
+
+# Deviance
+ggcoxdiagnostics(webl_LTP_1ph, 
+                 type = "martingale", # Plot residuals against risk scores (?)
+                 ox.scale = "linear.predictions", # Testing linear predictions
+                 hline = TRUE,
+                 ggtheme = theme_bw())
+# Not amazing, a few data points are skewing linearity but mostly looks good
+
+# Dfbeta
+ggcoxdiagnostics(webl_LTP_1ph, 
+                 type = "dfbeta", # Are there any very influential trials?
+                 ox.scale = "observation.id", # Shows residuals by rows (i.e. trials)
+                 hline = TRUE,
+                 ggtheme = theme_bw())
+# Looks really great, no IDs skewing
+
+# MODEL #2 - Fit slm noise, light, trial type three-way interaction model 
+webl_LTP_2 <- coxme(Surv(first_feed_latency_min, feed_censor) ~ scale(LAeq_slm_dB)*scale(light_level_lux)*trial_type + scale(hide_distance_m) + (1 | year/nest_id), data = final_webl)
+webl_LTP_2
+
+# Run cox proportional hazard model just to visualize residuals remove year to see if this fixed effect structure is violating hazard assumptions
+webl_LTP_2ph <- coxph(Surv(first_feed_latency_min, feed_censor) ~ scale(LAeq_slm_dB)*scale(light_level_lux)*trial_type + scale(hide_distance_m), data = final_webl)
+webl_LTP_2ph
+
+# ANOVA
+anova(webl_LTP_2, webl_LTP_2ph) # It looks like inclusion of random effects doesn't explain more variance than a simple model with no random effects... so I feel comfortable evaluation based on simple ph model
+
+# Rank LTP model 1 vs. 2
+model.sel(webl_LTP_1, webl_LTP_2, rank = "AICc") # Model 1 with two way interactions fits the data better, but moderate support for the three way interaction
+
+#            random df   logLik  AICc delta weight
+#webl_LTP_1     (y)  8 -232.177 483.8  0.00  0.872
+#webl_LTP_2 (y/n_i) 14 -224.941 487.6  3.84  0.128
+#Models ranked by AICc(x) 
+
+final_webl_nc <- final_webl_nc |>
+  mutate(as.factor(trial_type))
+
+tmb_webl_LTP <- glmmTMB(first_feed_latency_min ~ scale(LAeq_slm_dB)*scale(light_level_lux) + trial_type*scale(LAeq_slm_dB) + trial_type*scale(light_level_lux) + scale(hide_distance_m) + (1 | year/nest_id), REML = TRUE, data = final_webl_nc)
+summary(tmb_webl_LTP) # ...what
+# Visualize slm 
+
+library(ggeffects)
+
+ltp_predict <- predict_response(tmb_webl_LTP, terms = c("LAeq_slm_dB","trial_type"))
+
+print(ltp_predict)
+plot(ltp_predict, show_data = TRUE)
+
+# plot coxph
+
+ggsurvplot(survfit(webl_LTP_1ph), data = final_webl)
+
+
+
+# old
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ############################# Trial categorization  ############################
 
@@ -105,14 +309,14 @@ summary(random_AFL)
 # * Come back to this and check performances
 
 # How many total WEBL trials of each are there in the whole dataset (2024-2026)?
-final_webl |>
+final_webl |> 
   filter(!is.na(trial_start_time_hms)) |> # Remove trials that never started
   count(stimulus_object, # Sample good overall: 33 Control (2 cens.), 18 Green Ball (2 cens.), 23 Pink Beads (1 cens.)
         appr_censored = approach_censor == 0, 
         feed_censored = feed_censor == 0)
 
 # [LTF] - Linear correlation between green ball and pink beads
-obj_LTFwebl <- lmer(log(first_feed_latency_min + 1) ~ stimulus_object + (1 | section/year), data = final_webl, REML = F) # REML F for AIC ranking later
+obj_LTFwebl <- lmer(log(first_feed_latency_min + 1) ~ stimulus_object + (1 | sddection/year), data = final_webl, REML = F) # REML F for AIC ranking later
 summary(obj_LTFwebl) # Corr. between objects = 0.365, fails to converge with most complex random effects, removed site and nest ID
 # Full random effects structure converges without transformed latency, glmmTMB converges with transformed but lmer prints correlation
 
@@ -171,11 +375,8 @@ AIC(trial_LTAmobl, obj_LTAmobl, stim_intLTAmobl)
 # obj_LTAmobl      5 109.8686
 # stim_intLTAmobl  3 107.7827
 
-################################################################################
-########################## Western Bluebird Modeling ###########################
-################################################################################
 
-########################## Adjust response latencies  ##########################
+##################### GLMM Adjust response latencies  (OLD) ####################
 
 # Blind distance, nest age, number of chicks and canopy cover conceptually influence timings - might be too many, think more about this
 # Including each as fixed effects over-complicates models so adjust latencies by using residuals from a glmm 
@@ -184,6 +385,7 @@ AIC(trial_LTAmobl, obj_LTAmobl, stim_intLTAmobl)
 # [LTF] - Adjust for blind distance, nest age and number of chicks, and canopy cover (might feel safer with more canopy cover and feed sooner?)
 adjLTF_webl <- glmmTMB(log(first_feed_latency_min + 1) ~ scale(nest_age) + scale(chick_number) + scale(hide_distance_m) + scale(percent_canopy) + (1 | nest_id/site/section/year), data = final_webl)
 summary(adjLTF_webl) 
+
 
 # [LTF] - Look at residuals separately
 weblLTF_resid <- resid(adjLTF_webl)
@@ -332,6 +534,24 @@ mobl_AFL_coxme2 <- coxme(Surv(adj_AFL_min, diff_censor) ~ scale(LAeq_slm_dB)*sca
 
 ### AudioMoth Noise ###
 # ...
+
+########################## Variance of random effects ##########################
+
+# Look at entire dataset first, if there's justification to reduce nested effects look at individual species
+
+# [LTF] - What is the variance of the ideal random effects structure?
+random_LTF <- glmmTMB(log(first_feed_latency_min + 1) ~ 1 + (1 | nest_id/site/section/year), data = final_neo, REML = T)
+summary(random_LTF)
+
+# [LTA] - What is the variance of the ideal random effects structure?
+random_LTA <- glmmTMB(log(first_approach_latency_min + 1) ~ 1 + (1 | nest_id/site/section/year), data = final_neo, REML = T)
+summary(random_LTA)
+
+# [AFL] - What is the variance of the ideal random effects structure?
+random_AFL <- glmmTMB(log(diff_approach_feed_min + 1) ~ 1 + (1 | nest_id/site/section/year), data = final_neo, REML = T)
+summary(random_AFL)
+
+# Variances are different for each response variable, so use the most complex structure for all models going forward
 
 ################################################################################
 ############################### Between Species ################################
