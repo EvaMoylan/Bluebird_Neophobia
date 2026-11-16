@@ -14,24 +14,14 @@ library(here)
 # Load raw trial data without latencies or missing hide distances calculated
 neo_trials <- read_csv(here("Data","Raw_Bluebird_Neophobia.csv"))
 
-################################ Minor cleaning ################################
-
-neo_trials_clean <- neo_trials |>
-  mutate(year = as.factor(year(mdy(date))), # Add a year column
-         stimulus_object = case_when(stimulus_object == "Green Ball" ~ "Green ball", # Fix case differences in object names
-                                     stimulus_object == "Pink Beads" ~ "Pink beads",
-                                     .default = stimulus_object),
-         nest_box = str_remove(nest_box, "_2026")) |> # Remove formatting mistake
-  relocate(year, .after = nest_box)
-
 ########################### Calculate latency times ############################
 
 # Check data structure
-str(neo_trials_clean) # Times are in hms
+str(neo_trials) # Times are in hms
 
 # Calculate latencies for first approach, first feed, and first nest entry relative to trial start time
 # Bird specific latency columns already existed in the dataset, so re-calculate the latencies and rename them later
-neo_trials_latencies <- neo_trials_clean |>
+neo_trials_latencies <- neo_trials |>
   mutate(bird1_approach_latency_s = as.numeric(difftime(bird1_first_approach_hms, trial_start_time_hms, units = "min")), # Rename column as minutes later
          bird1_feed_latency_s = as.numeric(difftime(bird1_return_feed_hms, trial_start_time_hms, units = "min")),
          bird1_entry_latency_min = as.numeric(difftime(bird1_return_entry_hms, trial_start_time_hms, units = "min")),
