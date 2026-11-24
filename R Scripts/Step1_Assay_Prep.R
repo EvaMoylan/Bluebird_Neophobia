@@ -81,21 +81,21 @@ neo_trials_censor <- neo_trials_latencies |>
     mutate(diff_approach_prov_min = if_else(!is.na(first_approach_latency_min) & !is.na(first_feed_latency_min), # If there is a first approach and first provision time...
                                             as.numeric(first_feed_latency_min - first_approach_latency_min), # Take the difference between the first approach and provision
                                             NA), # Otherwise, leave NA
-           diff_censor = if_else(!is.na(diff_approach_prov_min), # If there is an observed latency in this column, assign 1
+           diff_status = if_else(!is.na(diff_approach_prov_min), # If there is an observed latency in this column, assign 1
                                  1,
                                  NA), # All others will remain NA for now
            diff_approach_prov_min = if_else(!is.na(first_approach_latency_min) & is.na(first_feed_latency_min), # If a bird approached but there was no provision...
                                             20 - first_approach_latency_min, # Assign difference until the trial ended
                                             diff_approach_prov_min), # Otherwise, keep the same
-           diff_censor = if_else(!is.na(diff_approach_prov_min) & is.na(diff_censor), # Censored latencies are still NA in the censor column, so if there's now a value in the difference column, but censor is NA...
+           diff_status = if_else(!is.na(diff_approach_prov_min) & is.na(diff_status), # Censored latencies are still NA in the censor column, so if there's now a value in the difference column, but censor is NA...
                                  0, # Then assign a 0 status
-                                 diff_censor), # Otherwise, keep status
+                                 diff_status), # Otherwise, keep status
            
            # Now censor approach latencies
            first_approach_latency_min = if_else(!is.na(trial_start_time_hms) & is.na(first_approach_latency_min), # If the trial started but there is no first approach...
                                           20, # Assign full trial time of 20 minutes
                                           first_approach_latency_min), # If there is, keep original latency
-           approach_censor = if_else(first_approach_latency_min == 20, # If the approach was right-censored...
+           approach_status = if_else(first_approach_latency_min == 20, # If the approach was right-censored...
                                  0, # Assign 0
                                  1), # If uncensored, assign 0
            
@@ -103,15 +103,15 @@ neo_trials_censor <- neo_trials_latencies |>
            first_feed_latency_min = if_else(!is.na(trial_start_time_hms) & is.na(first_feed_latency_min),
                                           20,
                                           first_feed_latency_min),
-           feed_censor = if_else(first_feed_latency_min == 20,
+           feed_status = if_else(first_feed_latency_min == 20,
                                  0,
                                  1)) |>
-  relocate(c(diff_approach_prov_min, approach_censor, feed_censor, diff_censor), .after = first_feed_latency_min)
+  relocate(c(diff_approach_prov_min, approach_status, feed_status, diff_status), .after = first_feed_latency_min)
 
-# Explore censored trials
-neo_trials_censor |> count(feed_censor) # 13 censored trials, 99 observed, 18 NA
-neo_trials_censor |> count(approach_censor) # 4 censored trials, 108 observed, 18 NA
-neo_trials_censor |> count(diff_censor) # 9 censored trials of 99 observed, 22 NA
+# Explore censored trials (entire data)
+neo_trials_censor |> count(feed_status) # 13 censored trials, 99 observed, 18 NA
+neo_trials_censor |> count(approach_status) # 4 censored trials, 108 observed, 18 NA
+neo_trials_censor |> count(diff_status) # 9 censored trials of 99 observed, 22 NA
 
 # Save censored data
 write_rds(neo_trials_censor, here("Outputs","Censor_BBNeophobia.rds"))
